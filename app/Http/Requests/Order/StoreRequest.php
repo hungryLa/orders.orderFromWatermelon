@@ -32,6 +32,7 @@ class StoreRequest extends FormRequest
             'deposit' => 'nullable|integer',
             'rest_amount' => 'nullable|integer',
             'color' => 'nullable|string',
+            'contract' => 'boolean',
         ];
     }
 }

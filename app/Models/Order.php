@@ -19,6 +19,10 @@ class Order extends Model
 
     public function furniture(): HasMany
     {
-        return $this->hasMany(Furniture::class,'order_id');
+        return $this->hasMany(Furniture::class,'order_id')->orderBy('id');
+    }
+
+    public function checkType($type){
+        return $this->type == $type;
     }
 }

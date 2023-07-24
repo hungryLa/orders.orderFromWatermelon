@@ -1,6 +1,6 @@
 
 .content{
-    width: 80%;
+    width: 90%;
     margin : 0 auto;
     margin-top: 30px;
 }
@@ -13,9 +13,6 @@
     display: block;
 }
 
-.pagination{
-    margin-left: 20px;
-}
 
 .order_index_table{
     font-size: 14px;
@@ -24,10 +21,10 @@
 .order_index_nav{
     display: flex;
     justify-content: space-between;
-    margin: 10px 20px 10px 40px;
+    margin: 10px 0 10px 0;
 }
 
-.order_index_nav h2{
+.order_h2{
     font-size: 30px;
     font-weight: 700;
 }
@@ -52,9 +49,10 @@
     font-weight: 700;
 }
 
-.order_creating_h1{
+.order_creating_nav{
     font-size: 30px;
-    margin-bottom: 15px;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
 
 .order_creating_order_info{
@@ -88,5 +86,34 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+}
+.order_creating_buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+.order_editing_nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.order_editing_nav h2 a{
+    color:#0a58ca;
+}
+
+
+.order_editing_buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+.order_editing_furniture_statuses{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 

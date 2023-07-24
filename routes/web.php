@@ -3,6 +3,7 @@
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FurnitureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,25 +20,42 @@ Route::get('/',function (){
     return redirect()->route('login');
 });
 
-Route::group(['prefix' => 'orders', 'middleware' => 'auth'],function(){
+Route::group(['middleware' => 'auth'],function(){
 
-    Route::get('',[OrderController::class, 'index'])
-        ->name('order.index');
+    Route::group(['prefix' => 'orders'],function (){
 
-    Route::get('create',[OrderController::class, 'create'])
-        ->name('order.create');
+        Route::get('',[OrderController::class, 'index'])
+            ->name('order.index');
 
-    Route::post('store',[OrderController::class, 'store'])
-        ->name('order.store');
+        Route::get('create',[OrderController::class, 'create'])
+            ->name('order.create');
 
-    Route::get('{order}/edit',[OrderController::class,'edit'])
-        ->name('order.edit');
+        Route::post('store',[OrderController::class, 'store'])
+            ->name('order.store');
 
-    Route::put('{order}/update',[OrderController::class,'update'])
-        ->name('order.update');
+        Route::get('{order}/edit',[OrderController::class,'edit'])
+            ->name('order.edit');
 
-    Route::delete('{order}/delete', [OrderController::class, 'destroy'])
-        ->name('order.delete');
+        Route::put('{order}/update',[OrderController::class,'update'])
+            ->name('order.update');
+
+        Route::delete('{order}/delete', [OrderController::class, 'destroy'])
+            ->name('order.delete');
+    });
+
+    Route::group(['prefix' => 'furniture'],function (){
+
+        Route::post('store',[FurnitureController::class,'store'])
+            ->name('furniture.store');
+
+        Route::put('{furniture}/update',[FurnitureController::class,'update'])
+            ->name('furniture.update');
+
+        Route::get('{furniture}/delete',[FurnitureController::class,'destroy'])
+            ->name('furniture.destroy');
+
+    });
+
 
 });
 

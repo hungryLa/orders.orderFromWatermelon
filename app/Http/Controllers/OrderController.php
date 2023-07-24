@@ -7,6 +7,7 @@ use App\Http\Requests\Order\UpdateRequest;
 use App\Models\Furniture;
 use App\Models\General;
 use App\Models\Order;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
@@ -33,6 +34,7 @@ class OrderController extends Controller
      */
     public function store(StoreRequest $request)
     {
+
         if($request->type == 1){
             $rules = [
                 'description' => 'array',
@@ -81,7 +83,13 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        return view('order.edit',compact('order'));
+        if( $order->checkType(1) ){
+            $furnitures = $order->furniture;
+        }else{
+            $furnitures = [];
+        }
+
+        return view('order.edit',compact('order','furnitures'));
     }
 
     /**
@@ -90,9 +98,12 @@ class OrderController extends Controller
     public function update(UpdateRequest $request, Order $order)
     {
         try {
-
             $data = $request->validated();
+            if($order->checkType(1) && $request->type == 0){
+                $order->furniture()->delete();
+            }
             $success = $order->update($data);
+
 
             if($success){
                 session()->flash('success', 'Информацию успешно обновлена');
@@ -102,7 +113,7 @@ class OrderController extends Controller
             return $exception->getMessage();
         }
 
-        return redirect()->route('order.show',compact('order'));
+        return redirect()->route('order.edit',compact('order'));
     }
 
     /**
@@ -111,7 +122,9 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         try {
-
+            if($order->checkType(1)){
+                $order->furniture()->delete();
+            }
             $success = $order->delete();
 
             if($success){

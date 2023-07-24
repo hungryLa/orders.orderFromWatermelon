@@ -4,7 +4,9 @@
 
 @section('contents')
     <div class="content">
-        <h1 class="order_creating_h1">Создание заказа</h1>
+        <div class="order_creating_nav">
+            <h2 class="order_creating_h2">Создание заказа</h2>
+        </div>
         <x-general.errors/>
         <form method="POST" action="{{route('order.store')}}">
             @csrf
@@ -73,71 +75,12 @@
                     </div>
                 </div>
             </div>
-            <button style="margin-left: auto; display: block" class="btn btn-success">Добавить</button>
+            <div class="order_creating_buttons">
+                <input type="checkbox" class="btn-check" value="{{true}}" name="contract" id="contract" checked >
+                <label class="btn btn-outline-primary" for="contract">Договор заключен</label>
+                <button style=" display: block" class="btn btn-success">Добавить</button>
+            </div>
         </form>
     </div>
 
 @endsection
-
-<script>
-    document.addEventListener('DOMContentLoaded',function (){
-        const row = document.querySelector('.order_creating_order_info')
-        const select = document.querySelector('#type')
-        const hide_input = document.querySelector('.hidden_input')
-        const furniture_block = document.querySelector('.order_creating_furniture_block')
-        const button_add = document.querySelector('.order-creating-furniture-add')
-        const button_remove = document.querySelector('.order-creating-furniture-remove')
-        let allInputs = document.querySelectorAll('.order_creating_furniture_input')
-
-        function checkType(){
-            if(select.value == 0){
-                row.style.gridTemplateColumns = '1fr 1fr 1fr'
-                hide_input.classList.remove('hidden')
-                furniture_block.classList.add('hidden')
-            }
-            else if(select.value == 1){
-                furniture_block.classList.remove('hidden')
-                row.style.gridTemplateColumns = '1fr 1fr'
-                hide_input.classList.add('hidden')
-            }
-            else{
-                row.style.gridTemplateColumns = '1fr 1fr'
-                hide_input.classList.add('hidden')
-            }
-        }
-
-        function addElement(){
-            var newFurnitureInput = document.querySelector('.order_creating_furniture_input_hidden').cloneNode(true);
-            newFurnitureInput.classList.add('order_creating_furniture_input')
-            newFurnitureInput.children[0].children[1].disabled = false
-            newFurnitureInput.children[1].children[1].disabled = false
-            newFurnitureInput.classList.remove(...['hidden','order_creating_furniture_input_hidden'])
-            allInputs[allInputs.length - 1].insertAdjacentElement('afterend', newFurnitureInput)
-            allInputs = document.querySelectorAll('.order_creating_furniture_input')
-
-            if(allInputs.length > 1) {
-                button_remove.classList.remove('hidden')
-            }
-            if (allInputs.length === 2) {
-                button_remove.classList.remove("hidden");
-            }
-        }
-
-        function removeElement() {
-            if(allInputs.length > 1) allInputs[allInputs.length - 1].remove()
-            allInputs = document.querySelectorAll('.order_creating_furniture_input')
-            if (allInputs.length === 1) {
-                button_remove.classList.add("hidden");
-            }
-
-        }
-
-        button_add.addEventListener('click', addElement)
-        button_remove.addEventListener('click', removeElement)
-
-        checkType()
-        select.addEventListener('change',function(){
-            checkType()
-        })
-    })
-</script>
