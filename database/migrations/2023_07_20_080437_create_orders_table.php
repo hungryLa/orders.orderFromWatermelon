@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('address');
             $table->string('color')->nullable();
             $table->unsignedInteger('price');
-            $table->unsignedInteger('delivery_price')->nullable();
-            $table->unsignedInteger('deposit')->nullable();
-            $table->unsignedInteger('rest_amount')->nullable();
+            $table->unsignedInteger('delivery_price')->nullable()->default(0);
+            $table->unsignedInteger('deposit')->nullable()->default(0);
+            $table->unsignedInteger('rest_amount')->nullable()->default(0);
             $table->boolean('contract')->nullable();
             $table->timestamps();
         });

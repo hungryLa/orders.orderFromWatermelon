@@ -59,7 +59,7 @@
                                   placeholder="Укажите остаток"/>
             </div>
             <div class="order_editing_buttons">
-                <a class="btn btn-primary" href="">Экспорт</a>
+                <a class="btn btn-primary" href="{{route('order.export',compact('order'))}}">Экспорт</a>
                 <button style="margin-left: auto; display: block" class="btn btn-success">Применить изменения</button>
             </div>
         </form>

@@ -41,6 +41,9 @@ Route::group(['middleware' => 'auth'],function(){
 
         Route::delete('{order}/delete', [OrderController::class, 'destroy'])
             ->name('order.delete');
+
+        Route::get('{order}/export',[OrderController::class,'export'])
+            ->name('order.export');
     });
 
     Route::group(['prefix' => 'furniture'],function (){

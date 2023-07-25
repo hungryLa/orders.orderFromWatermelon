@@ -9,6 +9,7 @@ use App\Models\General;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
@@ -135,5 +136,15 @@ class OrderController extends Controller
         }
 
         return redirect()->route('order.index');
+    }
+
+    public function export(Order $order){
+        try {
+            $pdf = Pdf::loadView('pdf.order',compact('order'));
+            $name = "Заказ №". $order->id;
+            return $pdf->stream($name);
+        } catch (\Exception $exception) {
+            return $exception->getMessage();
+        }
     }
 }
