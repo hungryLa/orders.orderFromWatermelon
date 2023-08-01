@@ -32,6 +32,14 @@ $furnitures = '';
         text-align: center;
     }
 
+    .for_input_with_underline{
+        padding-top: 5px;
+        width: 150px;
+        display: inline-block;
+        border-bottom: 1px solid black;
+        text-align: center;
+    }
+
     .img_lg{
         width: 430px;
         height: 154px;
@@ -445,9 +453,9 @@ XAAAoRAuAIBQ/gSIww4ZVui7KAAAAABJRU5ErkJggg=="/>
     <div>Список, основные характеристики, комплектность передаваемой Мебели, количество и стоимость единицы Мебели указаны
         в Настоящем договоре и(или), в Спецификации к Договору (Приложение № 1).</div>
     <div>1.2. Доставка Мебели Покупателю осуществляется силами и средствами (Продавца/Покупателя). </div>
-    <div><b>Цена доставки составляет {{$order->delivery_price?: 0}} рублей.<br>
-            Цена подъёма составляет (________________________) рублей.<br>
-            Цена сборки составляет (________________________) рублей.<br>
+    <div><b>Цена доставки составляет <div class="for_input_with_underline">{{$order->delivery_price?: 0}}</div> рублей.<br>
+            Цена подъёма составляет <div class="for_input_with_underline"></div> рублей.<br>
+            Цена сборки составляет <div class="for_input_with_underline"></div> рублей.<br>
             Передача Мебели от Продавца Покупателю осуществляется по адресу: </b></div>
     <div class="all_width_with_underline">{{$order->address?: ""}}</div>
     <div>местонахождения склада Продавца / местонахождения или места жительства Покупателя / иное)   с обязательным подписанием Сторонами Акта приема-передачи мебели (Приложение № 2).<br>
@@ -534,7 +542,8 @@ XAAAoRAuAIBQ/gSIww4ZVui7KAAAAABJRU5ErkJggg=="/>
         6.6. Неотъемлемой частью настоящего Договора являются приложения:<br>
         -6.6.1. Спецификация (Приложение № 1).<br>
         -6.6.2. Акт приема-передачи мебели (Приложение № 2).
-    </div><br>
+    </div>
+    <div style="page-break-before: always;"></div>
     <p><b>7. Адреса и реквизиты Сторон</b></p>
     <div class="contacts">
         <div class="seller_contact">

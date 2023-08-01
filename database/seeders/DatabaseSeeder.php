@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@mail.ru',
             'password' => Hash::make('password'),
         ]);
-        Order::factory(10)->create();
-        Furniture::factory(7)->create();
+//        Order::factory(10)->create();
+//        Furniture::factory(7)->create();
     }
 }
