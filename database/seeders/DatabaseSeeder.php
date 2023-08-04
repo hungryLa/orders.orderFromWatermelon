@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'sigmastudio102@gmail.com',
             'password' => Hash::make('Emilpro123321tty'),
         ]);
-        Order::factory(10)->create();
-        Furniture::factory(7)->create();
+//        Order::factory(10)->create();
+//        Furniture::factory(7)->create();
     }
 }
