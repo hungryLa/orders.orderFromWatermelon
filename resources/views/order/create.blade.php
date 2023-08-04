@@ -38,19 +38,55 @@
                                   placeholder="Введите номер телефона клиента"/>
             </div>
 
-            <x-form.inputText name="address" title="Адрес" value="{{old('address')}}" placeholder="Введите адрес"/>
+            <div class="order_creating_client_info_2">
+                <div>
+                    <label class="form-label" for="type_address">Тип адреса</label>
+                    <select  class="form-select type-select" name="type_address" id="type_address">
+                        <option disabled selected>Выберите тип адреса</option>
+                        @foreach(\App\Models\Order::TYPES_ADDRESS as $type_address)
+                            <option @if(old('type_address') == $loop->index) selected @endif value="{{$loop->index}}">{{$type_address}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <x-form.inputText name="address" title="Адрес" value="{{old('address')}}" placeholder="Введите адрес"/>
+                <div>
+                    <label class="form-label" for="type_payment">Тип оплаты</label>
+                    <select  class="form-select type-select" name="type_payment" id="type_payment">
+                        <option disabled selected>Выберите тип оплаты</option>
+                        @foreach(\App\Models\Order::TYPES_PAYMENT as $type_payment)
+                            <option @if(old('type_payment') == $loop->index) selected @endif value="{{$loop->index}}">{{$type_payment}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
 
-            <div class="order_creating_price_box">
-                <x-form.inputText name="price" title="Цена" value="{{old('price')}}" placeholder="Введите цену"/>
+            <div class="row">
+                <div class="col">
+                    <x-form.inputText name="price" title="Цена" value="{{old('price')}}" placeholder="Введите цену"/>
+                </div>
 
-                <x-form.inputText name="delivery_price" title="Стоимость доставки" value="{{old('delivery_price')}}"
-                                  placeholder="Введите стоимость доставки"/>
-
-                <x-form.inputText name="deposit" title="Аванс" value="{{old('deposit')}}"
-                                  placeholder="Укажите аванс"/>
-
-                <x-form.inputText name="rest_amount" title="Остаток" value="{{old('rest_amount')}}"
-                                  placeholder="Укажите остаток"/>
+                <div class="col">
+                    <x-form.inputText name="deposit" title="Аванс" value="{{old('deposit')}}"
+                                      placeholder="Укажите аванс"/>
+                </div>
+                <div class="col">
+                    <x-form.inputText name="delivery_price" title="Стоимость доставки" value="{{old('delivery_price')}}"
+                                      placeholder="Введите стоимость доставки"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <x-form.inputText name="lifting_price" title="Цена подъёма" value="{{old('lifting_price')}}"
+                                      placeholder="Укажите цену подъёма"/>
+                </div>
+                <div class="col">
+                    <x-form.inputText name="assembly_price" title="Цена сборки" value="{{old('assembly_price')}}"
+                                      placeholder="Укажите цену сборки"/>
+                </div>
+                <div class="col">
+                    <x-form.inputText name="rest_amount" title="Остаток" value="{{old('rest_amount')}}"
+                                      placeholder="Укажите остаток"/>
+                </div>
             </div>
             <div class="order_creating_furniture_block hidden">
                 <h2>Мебель <a class="btn btn-danger order-creating-furniture-remove hidden">-</a> <a class="btn btn-success order-creating-furniture-add">+</a></h2>

@@ -68,9 +68,16 @@
     gap: 20px;
 }
 
+.order_creating_client_info_2{
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    gap: 20px;
+}
+
 .order_creating_price_box{
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
+    gap: 20px;
 }
 .order_creating_price_box div{
     width: 23%;

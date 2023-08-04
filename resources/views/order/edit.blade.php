@@ -44,20 +44,58 @@
                                   placeholder="Введите номер телефона клиента"/>
             </div>
 
-            <x-form.inputText name="address" title="Адрес" value="{{$order->address}}" placeholder="Введите адрес"/>
+            <div class="order_creating_client_info_2">
+                <div>
+                    <label class="form-label" for="type_address">Тип адреса</label>
+                    <select  class="form-select type-select" name="type_address" id="type_address">
+                        @foreach(\App\Models\Order::TYPES_ADDRESS as $type_address)
+                            <option @if($order->type_address == $loop->index) selected @endif value="{{$loop->index}}">{{$type_address}}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-            <div class="order_creating_price_box">
-                <x-form.inputText name="price" title="Цена" value="{{$order->price}}" placeholder="Введите цену"/>
+                <x-form.inputText name="address" title="Адрес" value="{{$order->address}}" placeholder="Введите адрес"/>
 
-                <x-form.inputText name="delivery_price" title="Стоимость доставки" value="{{$order->delivery_price}}"
-                                  placeholder="Введите стоимость доставки"/>
-
-                <x-form.inputText name="deposit" title="Аванс" value="{{$order->deposit}}"
-                                  placeholder="Укажите аванс"/>
-
-                <x-form.inputText name="rest_amount" title="Остаток" value="{{$order->rest_amount}}"
-                                  placeholder="Укажите остаток"/>
+                <div>
+                    <label class="form-label" for="type_payment">Тип оплаты</label>
+                    <select  class="form-select type-select" name="type_payment" id="type_payment">
+                        <option disabled selected>Выберите тип оплаты</option>
+                        @foreach(\App\Models\Order::TYPES_PAYMENT as $type_payment)
+                            <option @if($order->type_payment == $loop->index) selected @endif value="{{$loop->index}}">{{$type_payment}}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
+
+            <div class="row">
+                <div class="col">
+                    <x-form.inputText name="price" title="Цена" value="{{$order->price}}" placeholder="Введите цену"/>
+                </div>
+
+                <div class="col">
+                    <x-form.inputText name="delivery_price" title="Стоимость доставки" value="{{$order->delivery_price}}"
+                                      placeholder="Введите стоимость доставки"/>
+                </div>
+                <div class="col">
+                    <x-form.inputText name="deposit" title="Аванс" value="{{$order->deposit}}"
+                                      placeholder="Укажите аванс"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <x-form.inputText name="lifting_price" title="Цена подъёма" value="{{$order->lifting_price}}"
+                                      placeholder="Укажите цену подъёма"/>
+                </div>
+                <div class="col">
+                    <x-form.inputText name="assembly_price" title="Цена сборки" value="{{$order->assembly_price}}"
+                                      placeholder="Укажите цену сборки"/>
+                </div>
+                <div class="col">
+                    <x-form.inputText name="rest_amount" title="Остаток" value="{{$order->rest_amount}}"
+                                      placeholder="Укажите остаток"/>
+                </div>
+            </div>
+
             <div class="order_editing_buttons">
                 <a class="btn btn-primary" href="{{route('order.export',compact('order'))}}">Экспорт</a>
                 <button style="margin-left: auto; display: block" class="btn btn-success">Применить изменения</button>

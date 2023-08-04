@@ -32,6 +32,14 @@ $furnitures = '';
         text-align: center;
     }
 
+    .for_input_with_underline{
+        padding-top: 5px;
+        width: 150px;
+        display: inline-block;
+        border-bottom: 1px solid black;
+        text-align: center;
+    }
+
     .img_lg{
         width: 430px;
         height: 154px;
@@ -445,12 +453,17 @@ XAAAoRAuAIBQ/gSIww4ZVui7KAAAAABJRU5ErkJggg=="/>
     <div>Список, основные характеристики, комплектность передаваемой Мебели, количество и стоимость единицы Мебели указаны
         в Настоящем договоре и(или), в Спецификации к Договору (Приложение № 1).</div>
     <div>1.2. Доставка Мебели Покупателю осуществляется силами и средствами (Продавца/Покупателя). </div>
-    <div><b>Цена доставки составляет {{$order->delivery_price?: 0}} рублей.<br>
-            Цена подъёма составляет (________________________) рублей.<br>
-            Цена сборки составляет (________________________) рублей.<br>
+    <div><b>Цена доставки составляет <div class="for_input_with_underline">{{$order->delivery_price?: '—'}}</div> рублей.<br>
+            Цена подъёма составляет <div class="for_input_with_underline">{{$order->lifting_price?: '—'}}</div> рублей.<br>
+            Цена сборки составляет <div class="for_input_with_underline">{{$order->assembly_price?: '—'}}</div> рублей.<br>
             Передача Мебели от Продавца Покупателю осуществляется по адресу: </b></div>
     <div class="all_width_with_underline">{{$order->address?: ""}}</div>
-    <div>местонахождения склада Продавца / местонахождения или места жительства Покупателя / иное)   с обязательным подписанием Сторонами Акта приема-передачи мебели (Приложение № 2).<br>
+    <div>
+        @foreach(\App\Models\Order::TYPES_ADDRESS as $type_address)
+             <span @if($loop->index == $order->type_address) style="text-decoration: underline" @endif>{{$type_address}}</span>
+            @if(count(\App\Models\Order::TYPES_ADDRESS) != $loop->index + 1) /@endif
+        @endforeach с
+        обязательным подписанием Сторонами Акта приема-передачи мебели (Приложение № 2).<br>
         1.3. Гарантийный срок на Мебель составляет 18 месяцев, начинает исчисляться с даты передачи Мебели Покупателю по Акту приема-передачи (Приложение № 2).<br>
         1.4. Гарантийные обязательства действительны при условии соблюдения Покупателем условий эксплуатации, то есть правильным использованием мебели по назначению</div>
     <p><b>2. Обязанности Сторон</b></p>
@@ -481,8 +494,11 @@ XAAAoRAuAIBQ/gSIww4ZVui7KAAAAABJRU5ErkJggg=="/>
         с момента подписания Сторонами настоящего Договора.<br>
         -3.3.2. Оставшаяся часть цены Договора в размере {{$order->rest_amount ?: 0}} рублей, в том числе НДС не облагается,
         уплачивается Покупателем в день поставки заказа.<br>
-        3.4. Оплата Мебели производится путем (передачи наличного внесения денежных средств в кассу Продавца / безналичного
-        перечисления денежных средств по реквизитам Продавца, указанным в настоящем Договоре).<br>
+
+        3.4. Оплата Мебели производится путем ( @foreach(\App\Models\Order::TYPES_PAYMENT as $type_payment)
+            <span @if($loop->index == $order->type_payment) style="text-decoration: underline" @endif>{{$type_payment}}</span>
+            @if(count(\App\Models\Order::TYPES_PAYMENT) != $loop->index + 1) /@endif
+        @endforeach ).<br>
         3.5 При безналичной оплате Обязанность Покупателя по оплате по настоящему Договору считается исполненной с момента
         поступления денежных средств  на корреспондентский счет банка Продавца.
     </div>
@@ -567,7 +583,7 @@ XAAAoRAuAIBQ/gSIww4ZVui7KAAAAABJRU5ErkJggg=="/>
     <div class="signs">
         <div class="sign_seller">
             Продавец:<br>
-            ____________/Садыков Э.Р.<br>
+            ____________/ Садыков Э.Р.<br>
             (подпись/Ф.И.О.)
         </div>
         <div class="sign_client">
