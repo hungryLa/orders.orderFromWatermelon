@@ -1,0 +1,127 @@
+
+.content{
+    width: 90%;
+    margin : 0 auto;
+    margin-top: 30px;
+    padding-bottom:  20px;
+}
+
+.hidden{
+    display: none;
+}
+
+.hidden_input{
+    display: block;
+}
+
+
+.order_index_table{
+    font-size: 14px;
+}
+
+.order_index_nav{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 10px 0;
+}
+
+.order_h2{
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.order_index_buttons{
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 15px 10px 0;
+    align-items: flex-start;
+}
+
+.order_index_guide{
+    margin:10px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 20px;
+}
+
+.order_index_guide span{
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.order_creating_nav{
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.order_creating_order_info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.order_creating_client_info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.order_creating_client_info_2{
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    gap: 20px;
+}
+
+.order_creating_price_box{
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+}
+.order_creating_price_box div{
+    width: 23%;
+}
+
+.order_creating_furniture_block{
+    margin: 20px 0;
+}
+
+.order_creating_furniture_block h2{
+    font-size: 30px;
+}
+.order_creating_furniture_input{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.order_creating_buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+.order_editing_nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.order_editing_nav h2 a{
+    color:#0a58ca;
+}
+
+
+.order_editing_buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+.order_editing_furniture_statuses{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
