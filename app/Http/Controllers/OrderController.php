@@ -55,6 +55,11 @@ class OrderController extends Controller
         }
         try {
             $data = $request->validated();
+
+            if(!$request->has('contract')){
+                $data['contract'] = false;
+            }
+
             $success = Order::create($data);
             if($request->type == 1){
                 for ($i = 0; $i < count($request->description); $i++){
