@@ -9,9 +9,10 @@
         </div>
         <x-general.flash/>
         <div class="order_index_guide">
-            <span>Зм - Замеры</span>
-            <span>ВЗ - Визуализация</span>
             <span>ДГ - Договор</span>
+            <span>ОГ - Отгрузка</span>
+            <span>ЗМ - Замеры</span>
+            <span>ВЗ - Визуализация</span>
             <span>ЗвР - Запуск в работу</span>
             <span>ЗР - Заказ распила</span>
             <span>Сб - Сборка</span>
@@ -22,6 +23,7 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Дата создания</th>
                     <th scope="col">ФИО</th>
                     <th scope="col">Ном.тел.</th>
                     <th scope="col">Название</th>
@@ -31,9 +33,10 @@
                     <th scope="col">Аванс</th>
                     <th scope="col">Остаток</th>
                     <th scope="col">Описание</th>
-                    <th scope="col">Зм</th>
-                    <th scope="col">ВЗ</th>
                     <th scope="col">ДГ</th>
+                    <th scope="col">ОГ</th>
+                    <th scope="col">ЗМ</th>
+                    <th scope="col">ВЗ</th>
                     <th scope="col">ЗвР</th>
                     <th scope="col">ЗР</th>
                     <th scope="col">Сб</th>
@@ -46,6 +49,7 @@
                     @if($order->type == 0)
                         <tr data-href="{{route('order.edit',compact('order'))}}">
                             <th scope="row">{{$order->id}}</th>
+                            <td>{{\Carbon\Carbon::parse($order->created_at)->format('H:i d.m.Y')}}</td>
                             <td>{{$order->full_name}}</td>
                             <td>{{$order->phone_number}}</td>
                             <td>{{$order->title}}</td>
@@ -55,7 +59,8 @@
                             <td>{{$order->deposit ? $order->deposit ." руб." : ''}}</td>
                             <td>{{$order->rest_amount ? $order->rest_amount ." руб." : ''}}</td>
                             <td>{{$order->color}}</td>
-                            <td></td>
+                            <td><input type="checkbox" disabled @if($order->contract) checked @endif></td>
+                            <td><input type="checkbox" disabled @if($order->is_shipped) checked @endif></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -69,6 +74,7 @@
                             <tr data-href="{{route('order.edit',compact('order'))}}">
                                 @if($loop->index == 0)
                                     <th scope="row">{{$order->id}}</th>
+                                    <td>{{\Carbon\Carbon::parse($order->created_at)->format('H:i d.m.Y')}}</td>
                                     <td>{{$order->full_name}}</td>
                                     <td>{{$order->phone_number}}</td>
                                     <td>{{$order->title}}</td>
@@ -88,15 +94,17 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
+                                    <td></td>
                                     <td>{{$furniture->description}}</td>
                                 @endif
-                                <td><input type="checkbox" disabled @if($furniture->measurements) checked @endif></td>
-                                <td><input type="checkbox" disabled @if($furniture->visualization) checked @endif></td>
-                                <td><input type="checkbox" disabled @if($order->contract) checked @endif></td>
-                                <td><input type="checkbox" disabled @if($furniture->getting_started) checked @endif></td>
-                                <td><input type="checkbox" disabled @if($furniture->cutting_order) checked @endif></td>
-                                <td><input type="checkbox" disabled @if($furniture->assembling) checked @endif></td>
-                                <td><input type="checkbox" disabled @if($furniture->delivery_installation) checked @endif></td>
+                                    <td><input type="checkbox" disabled @if($order->contract) checked @endif></td>
+                                    <td><input type="checkbox" disabled @if($order->is_shipped) checked @endif></td>
+                                    <td><input type="checkbox" disabled @if($furniture->measurements) checked @endif></td>
+                                    <td><input type="checkbox" disabled @if($furniture->visualization) checked @endif></td>
+                                    <td><input type="checkbox" disabled @if($furniture->getting_started) checked @endif></td>
+                                    <td><input type="checkbox" disabled @if($furniture->cutting_order) checked @endif></td>
+                                    <td><input type="checkbox" disabled @if($furniture->assembling) checked @endif></td>
+                                    <td><input type="checkbox" disabled @if($furniture->delivery_installation) checked @endif></td>
                                 <td>{{$furniture->note}}</td>
                             </tr>
                         @endforeach

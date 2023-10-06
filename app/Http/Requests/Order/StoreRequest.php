@@ -37,6 +37,7 @@ class StoreRequest extends FormRequest
             'rest_amount' => 'nullable|integer',
             'color' => 'nullable|string',
             'contract' => 'boolean',
+            'is_shipped' => 'boolean',
         ];
     }
 }

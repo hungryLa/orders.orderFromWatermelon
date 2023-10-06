@@ -551,6 +551,7 @@ XAAAoRAuAIBQ/gSIww4ZVui7KAAAAABJRU5ErkJggg=="/>
         -6.6.1. Спецификация (Приложение № 1).<br>
         -6.6.2. Акт приема-передачи мебели (Приложение № 2).
     </div><br>
+    <div style="page-break-before: always;"></div>
     <p><b>7. Адреса и реквизиты Сторон</b></p>
     <div class="contacts">
         <div class="seller_contact">

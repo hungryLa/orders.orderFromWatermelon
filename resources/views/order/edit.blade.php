@@ -97,7 +97,13 @@
             </div>
 
             <div class="order_editing_buttons">
-                <a class="btn btn-primary" href="{{route('order.export',compact('order'))}}">Экспорт</a>
+                <div>
+                    <input type="checkbox" class="btn-check" value="{{true}}" name="contract" id="contract"  @if($order->contract) checked @endif >
+                    <label class="btn btn-outline-primary" for="contract">Договор заключен</label>
+                    <input type="checkbox" class="btn-check" value="{{true}}" name="is_shipped" id="is_shipped" @if($order->is_shipped) checked @endif >
+                    <label class="btn btn-outline-primary" for="is_shipped">Отгружено</label>
+                    <a class="btn btn-success" href="{{route('order.export',compact('order'))}}">Экспорт</a>
+                </div>
                 <button style="margin-left: auto; display: block" class="btn btn-success">Применить изменения</button>
             </div>
         </form>

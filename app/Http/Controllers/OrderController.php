@@ -35,7 +35,6 @@ class OrderController extends Controller
      */
     public function store(StoreRequest $request)
     {
-
         if($request->type == 1){
             $rules = [
                 'description' => 'array',
@@ -98,13 +97,22 @@ class OrderController extends Controller
      */
     public function update(UpdateRequest $request, Order $order)
     {
+
         try {
             $data = $request->validated();
+
+            if(!$request->has('contract')){
+                $data['contract'] = false;
+            }
+
+            if(!$request->has('is_shipped')){
+                $data['is_shipped'] = false;
+            }
             if($order->checkType(1) && $request->type == 0){
                 $order->furniture()->delete();
             }
-            $success = $order->update($data);
 
+            $success = $order->update($data);
 
             if($success){
                 session()->flash('success', 'Информацию успешно обновлена');

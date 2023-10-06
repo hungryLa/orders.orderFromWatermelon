@@ -112,8 +112,12 @@
                 </div>
             </div>
             <div class="order_creating_buttons">
-                <input type="checkbox" class="btn-check" value="{{true}}" name="contract" id="contract" checked >
-                <label class="btn btn-outline-primary" for="contract">Договор заключен</label>
+                <div>
+                    <input type="checkbox" class="btn-check" value="{{true}}" name="contract" id="contract" checked >
+                    <label class="btn btn-outline-primary" for="contract">Договор заключен</label>
+                    <input type="checkbox" class="btn-check" value="{{true}}" name="is_shipped" id="is_shipped">
+                    <label class="btn btn-outline-primary" for="is_shipped">Отгружено</label>
+                </div>
                 <button style=" display: block" class="btn btn-success">Добавить</button>
             </div>
         </form>

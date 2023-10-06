@@ -27,6 +27,7 @@ return new class extends Migration
             $table->unsignedInteger('lifting_price')->nullable()->default(0);
             $table->unsignedInteger('assembly_price')->nullable()->default(0);
             $table->unsignedInteger('rest_amount')->nullable()->default(0);
+            $table->boolean('is_shipped')->default(false);
             $table->boolean('contract')->nullable();
             $table->timestamps();
         });
