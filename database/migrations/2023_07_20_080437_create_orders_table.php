@@ -23,6 +23,7 @@ return new class extends Migration
             $table->smallInteger('type_payment');
             $table->unsignedInteger('price');
             $table->unsignedInteger('delivery_price')->nullable()->default(0);
+            $table->date('deadline_delivery');
             $table->unsignedInteger('deposit')->nullable()->default(0);
             $table->unsignedInteger('lifting_price')->nullable()->default(0);
             $table->unsignedInteger('assembly_price')->nullable()->default(0);

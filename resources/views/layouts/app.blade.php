@@ -54,7 +54,6 @@
             if(select.value == 0){
                 row.style.gridTemplateColumns = '1fr 1fr 1fr'
                 hide_input.classList.remove('hidden')
-                furniture_block.classList.add('hidden')
             }
             else if(select.value == 1){
                 furniture_block.classList.remove('hidden')

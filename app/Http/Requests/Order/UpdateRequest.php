@@ -31,6 +31,7 @@ class UpdateRequest extends FormRequest
             'type_payment' => 'required|integer',
             'price' => 'required|integer',
             'delivery_price' => 'nullable|integer',
+            'deadline_delivery' => 'required|date',
             'deposit' => 'nullable|integer',
             'lifting_price' => 'nullable|integer',
             'assembly_price' => 'nullable|integer',

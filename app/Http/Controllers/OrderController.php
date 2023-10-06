@@ -88,11 +88,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        if( $order->checkType(1) ){
-            $furnitures = $order->furniture;
-        }else{
-            $furnitures = [];
-        }
+        $furnitures = $order->furniture;
 
         return view('order.edit',compact('order','furnitures'));
     }

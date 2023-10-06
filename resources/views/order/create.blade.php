@@ -31,11 +31,14 @@
                 <x-form.inputText name="title" title="Название" value="{{old('title')}}" placeholder="Введите название"/>
             </div>
 
-            <div class="order_creating_client_info">
+            <div class="order_creating_client_info_2">
                 <x-form.inputText name="full_name" title="ФИО" value="{{old('full_name')}}" placeholder="Введите ФИО клиента"/>
 
                 <x-form.inputText name="phone_number" title="Номер телефона" value="{{old('phone_number')}}"
                                   placeholder="Введите номер телефона клиента"/>
+
+                <x-form.inputWithType type="date" name="deadline_delivery" title="Срок сдачи" value="{{old('deadline_delivery')}}"
+                                  placeholder="Укажите срок сдачи "/>
             </div>
 
             <div class="order_creating_client_info_2">
@@ -88,7 +91,16 @@
                                       placeholder="Укажите остаток"/>
                 </div>
             </div>
-            <div class="order_creating_furniture_block hidden">
+            <div class="order_creating_buttons">
+                <div>
+                    <input type="checkbox" class="btn-check" value="{{true}}" name="contract" id="contract" checked >
+                    <label class="btn btn-outline-primary" for="contract">Договор заключен</label>
+                    <input type="checkbox" class="btn-check" value="{{true}}" name="is_shipped" id="is_shipped">
+                    <label class="btn btn-outline-primary" for="is_shipped">Отгружено</label>
+                </div>
+                <button style=" display: block" class="btn btn-success">Добавить</button>
+            </div>
+            <div class="order_creating_furniture_block">
                 <h2>Мебель <a class="btn btn-danger order-creating-furniture-remove hidden">-</a> <a class="btn btn-success order-creating-furniture-add">+</a></h2>
                 <div class="order_creating_furniture_input_hidden mb-3 hidden">
                     <div>
@@ -110,15 +122,6 @@
                         <input type="text" class="form-control" id="note" name="note[]" placeholder="Укажите примечание">
                     </div>
                 </div>
-            </div>
-            <div class="order_creating_buttons">
-                <div>
-                    <input type="checkbox" class="btn-check" value="{{true}}" name="contract" id="contract" checked >
-                    <label class="btn btn-outline-primary" for="contract">Договор заключен</label>
-                    <input type="checkbox" class="btn-check" value="{{true}}" name="is_shipped" id="is_shipped">
-                    <label class="btn btn-outline-primary" for="is_shipped">Отгружено</label>
-                </div>
-                <button style=" display: block" class="btn btn-success">Добавить</button>
             </div>
         </form>
     </div>

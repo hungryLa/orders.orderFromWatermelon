@@ -36,6 +36,27 @@ class FurnitureController extends Controller
         try {
             $order = $request->order;
             $data = $request->validated();
+            if(!$request->has('measurements')){
+                $data['measurements'] = false;
+            }
+            if(!$request->has('visualization')){
+                $data['visualization'] = false;
+            }
+
+            if(!$request->has('getting_started')){
+                $data['getting_started'] = false;
+            }
+            if(!$request->has('cutting_order')){
+                $data['cutting_order'] = false;
+            }
+
+            if(!$request->has('assembling')){
+                $data['assembling'] = false;
+            }
+
+            if(!$request->has('delivery_installation')){
+                $data['delivery_installation'] = false;
+            }
 
             $success = $furniture->update($data);
 
