@@ -49,7 +49,7 @@
                     @if($order->type == 0)
                         <tr data-href="{{route('order.edit',compact('order'))}}">
                             <th scope="row">{{$order->id}}</th>
-                            <td>{{\Carbon\Carbon::parse($order->created_at)->format('H:i d.m.Y')}}</td>
+                            <td>{{\Carbon\Carbon::parse($order->created_at)->format('d.m.Y')}}</td>
                             <td>{{$order->full_name}}</td>
                             <td>{{$order->phone_number}}</td>
                             <td>{{$order->title}}</td>
@@ -74,7 +74,7 @@
                             <tr data-href="{{route('order.edit',compact('order'))}}">
                                 @if($loop->index == 0)
                                     <th scope="row">{{$order->id}}</th>
-                                    <td>{{\Carbon\Carbon::parse($order->created_at)->format('H:i d.m.Y')}}</td>
+                                    <td>{{\Carbon\Carbon::parse($order->created_at)->format('d.m.Y')}}</td>
                                     <td>{{$order->full_name}}</td>
                                     <td>{{$order->phone_number}}</td>
                                     <td>{{$order->title}}</td>
