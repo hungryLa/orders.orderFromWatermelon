@@ -129,7 +129,7 @@
                             </div>
                         </div>
                         <div class="order_editing_furniture_statuses">
-                            @if($order->type == \App\Models\Order::TYPES['1'])
+                            @if($order->type == 1)
                                 <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                                     <input type="checkbox" class="btn-check" value="{{true}}" name="measurements" id="{{"measurements".$loop->index}}"
                                            @if($furniture->measurements) checked @endif>
@@ -182,7 +182,7 @@
                     </div>
                 </div>
                 <div class="order_editing_furniture_statuses">
-                    @if($order->type == \App\Models\Order::TYPES['1'])
+                    @if($order->type == 1)
                         <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                             <input type="checkbox" class="btn-check" value="{{true}}" name="measurements" id="measurements"
                                    @if(old('measurements')) checked @endif>
